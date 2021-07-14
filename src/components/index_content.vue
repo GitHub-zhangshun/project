@@ -66,7 +66,7 @@ import Swiper2, { Autoplay } from "swiper";
 Swiper2.use([Autoplay]);
 import "swiper/swiper-bundle.css";
 export default {
-  name: "index_content",
+  name: "indexContent",
   components: {
     Swiper,
     SwiperSlide,

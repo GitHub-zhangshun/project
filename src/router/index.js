@@ -10,9 +10,21 @@ const routes = [{
         redirect:'indexContent',
         children: [{
             path: "indexContent",
-            name: "index_content",
+            name: "indexContent",
             component: () => import ('@/components/index_content.vue')
-        }, ]
+        }, {
+            path: "loan",
+            name: "loan",
+            component: () => import ('@/components/loan.vue')
+        },{
+            path: "credit",
+            name: "credit",
+            component: () => import ('@/components/credit.vue')
+        },{
+            path: "my",
+            name: "my",
+            component: () => import ('@/components/my.vue')
+        }]
     },
     {
         path: '/about',
