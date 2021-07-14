@@ -4,6 +4,7 @@
       <span :class="flag?'active' : ''" @click="active='1'">急速贷</span>
       <span :class="!flag?'active' : ''" @click="active='2'">大额贷</span>
     </div>
+    
   </div>
 </template>
 
@@ -33,17 +34,14 @@ export default {
     background-size: 100% 100%;
     border-radius: 0 0 20px 20px;
     text-align: left;
-    // display: flex;
     padding-left: 30px;
     padding-top: 20px;
     box-sizing: border-box;
-    // align-items: top;
     span{
       font-size: 30px;
       color: #fff;
       padding-top: 10px;
       position: relative;
-      // display: inline-block;
       &:first-child{
         margin-right: 40px;
       }
