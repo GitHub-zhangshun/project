@@ -8,6 +8,14 @@ import 'lib-flexible'
 
 Vue.config.productionTip = false
 
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
+  // to and from are both route objects. must call `next`.
+})
+
 new Vue({
   router,
   render: h => h(App)

@@ -47,6 +47,7 @@ export default {
 .index{
   height: 100vh;
   .menus{
+    background: #fff;
     height: 100px;
     position: fixed;
     left: 0;
