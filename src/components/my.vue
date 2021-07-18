@@ -96,13 +96,13 @@ export default {
 
 <style scoped lang="less">
 .my {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 50px);
   overflow-x: hidden;
   overflow-y: scroll;
   .top { 
-    padding: 40px 0  0 30px;
+    padding: 46/2.44px 0  0 30/2.44px;
     position: relative;
-    height: 160px;
+    height: 220/2.44px;
     background: #fcd537;
     box-sizing: border-box;
     display: flex;
@@ -115,43 +115,43 @@ export default {
       height: 55%;
       position: absolute;
       left: -20%;
-      top: 150px;
+      top: 200/2.44px;
       border-radius: 0 0 50% 50%;
       background: #fcd537;
     }
     .left{
       position: relative;
-      margin-right: 20px;
+      margin-right: 35/2.44px;
       img{
-        width: 110px;
-        height: 110px;
+        width: 160/2.44px;
+        height: 160/2.44px;
         border-radius: 100%;
       }
       span{
         position: absolute;
-        bottom: 4px;
+        bottom: 0/2.44px;
         left: 50%;
         white-space: nowrap;
         transform: translateX(-50%);
         color: #fff;
-        padding: 6px;
-        border-radius: 32px;
+        padding: 14/2.44px;
+        border-radius: 32/2.44px;
         background: #000;
-        font-size: 20px;
+        font-size: 26/2.44px;
       }
     }
     .phone{
-      margin-top: 20px;
-      font-size: 40px;
+      margin-top: 33/2.44px;
+      font-size: 40/2.44px;
       flex: 1;
       text-align: left;
     }
     .renzhen{
-      margin-top: 40px;
-      padding: 10px 20px 10px 18px;
+      margin-top: 37/2.44px;
+      padding: 27/2.44px 49/2.44px 23/2.44px 50/2.44px;
       background: #ffeeab;
-      border-radius: 20px 0 0 20px;
-      font-size: 26px;
+      border-radius: 50/2.44px 0 0 50/2.44px;
+      font-size: 42/2.44px;
     }
   }
   .menu{
@@ -159,69 +159,70 @@ export default {
     position: relative;
     top: 0;
     z-index: 3;
-    margin: 0 20px;
+    margin: 0px 34/2.44px;
     background: #fff;
-    margin-top: 30px;
-    border-radius: 10px;
+    border-radius: 10/2.44px;
     justify-content: space-around;
-    padding: 30px 0;
+    padding: 30/2.44px 0 45/2.44px 0;
     li{
       display: flex;
       flex-direction: column;
       align-items: center;
-      // justify-content: space-around;
       img{
-        width: 70px;
-        height: 70px;
-        margin-bottom: 15px;
+        width: 84/2.44px;
+        height: 94/2.44px;
+        margin-bottom: 47/2.44px;
+      }
+      span{
+        font-size: 36/2.44px;
       }
     }
   }
   .vip{
-    margin: 20px 20px;
+    margin: 32/2.44px 34/2.44px;
     background: #000;
-    border-radius: 10px;
+    border-radius: 10/2.44px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 26/2.44px 32/2.44px;
     .left{
       display: flex;
       align-items: center;
       img{
-        width: 42px;
-        height: 42px;
-        margin-right: 10px;
+        width: 60/2.44px;
+        height: 58/2.44px;
+        margin-right: 10/2.44px;
       }
       span{
         color: #fff;
-        font-size: 28px;
+        font-size: 36/2.44px;
       }
     }
     button{
-      padding: 10px 20px;
+      padding: 16/2.44px 37/2.44px;
       background: transparent;
-      border: 1px solid #fff;
-      border-radius: 40px;
+      border: 1/2.44px solid #fff;
+      border-radius: 40/2.44px;
       color: #fff;
-      font-size: 24px;
+      font-size: 34/2.44px;
     }
   }
   .tools{
-    margin: 0 20px 20px;
+    margin: 0 20/2.44px 46/2.44px;
     background: #fff;
-    border-radius: 10px;
-    padding: 20px 0 20px 20px;
+    border-radius: 10/2.44px;
+    padding: 52/2.44px 0 43/2.44px 40/2.44px;
     .title{
       text-align: left;
-      font-size: 30px;
-      margin-bottom: 30px;
+      font-size: 48/2.44px;
+      margin-bottom: 30/2.44px;
       span{
-        width: 5px;
-        height: 20px;
+        width: 11/2.44px;
+        height: 37/2.44px;
         display: inline-block;
         background: #fcd149;
-        margin-right: 10px;
+        margin-right: 10/2.44px;
       }
     }
     ul{
@@ -233,38 +234,38 @@ export default {
         align-items: center;
         flex-direction: column;
         justify-content: center;
-        margin-right: 100px;
+        margin-right: 100/2.44px;
         img{
-          width: 70px;
-          height: 70px;
-          margin-bottom: 20px;
+          width: 78/2.44px;
+          height: 64/2.44px;
+          margin-bottom: 48/2.44px;
         }
       }
     }
   }
   .setting{
-    margin: 0 20px 20px;
+    margin: 0 20/2.44px 20/2.44px;
     background: #fff;
-    border-radius: 10px;
-    padding: 20px 0 20px 20px;
+    border-radius: 10/2.44px;
+    padding: 52/2.44px 0 56/2.44px 40/2.44px;
     .title{
       text-align: left;
-      font-size: 30px;
-      margin-bottom: 30px;
+      font-size: 48/2.44px;
+      margin-bottom: 100/2.44px;
       span{
-        width: 5px;
-        height: 20px;
+        width: 11/2.44px;
+        height: 37/2.44px;
         display: inline-block;
         background: #fcd149;
-        margin-right: 10px;
+        margin-right: 10/2.44px;
       }
     }
     ul{
       li{
         display: flex;
         justify-content: space-between;
-        margin-bottom: 50px;
-        padding-right: 20px;
+        margin-bottom: 112/2.44px;
+        padding-right: 20/2.44px;
         &:last-child{
           margin-bottom: 0;
         }
@@ -272,12 +273,12 @@ export default {
           display: flex;
           align-items: center;
           img{
-            width: 28px;
-            height: 28px;
-            margin-right: 10px;
+            width: 41/2.44px;
+            height: 41/2.44px;
+            margin-right: 10/2.44px;
           }
           span{
-            font-size: 26px;
+            font-size: 42/2.44px;
           }
         }
       }
@@ -285,12 +286,12 @@ export default {
   }
   &>button{
     width: 80%;
-    height: 100px;
-    font-size: 30px;
+    height: 139/2.44px;
+    font-size: 48/2.44px;
     background: #fcd43c;
     border: none;
-    border-radius: 80px;
-    margin-bottom: 50px;
+    border-radius: 80/2.44px;
+    margin-bottom: 116/2.44px;
   }
 }
 </style>

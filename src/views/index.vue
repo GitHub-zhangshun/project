@@ -48,7 +48,7 @@ export default {
   height: 100vh;
   .menus{
     background: #fff;
-    height: 100px;
+    height:50px;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -58,12 +58,12 @@ export default {
       flex-direction: column;
       img{
         display: inline-block;
-        height: 50px;
-        width: 50px;
-        margin-bottom: 16px;
+        height: 36/1.44px;
+        width: 36/1.44px;
+        margin-bottom: 9/1.44px;
       }
       p{
-        font-size: 20px;
+        font-size: 18/1.44px;
         color: #000;
       }
     }

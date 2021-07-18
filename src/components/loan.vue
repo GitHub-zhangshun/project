@@ -40,8 +40,7 @@
     </div>
     <ul class="product_list">
       <li class="flex_center_center" v-for="(item, index) in 5" :key="index">
-        <img
-          src="https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg"/>
+        <img  src="https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg"/>
         <div class="name_range flex_center_center">
           <div class="name">
             <p>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
@@ -79,117 +78,120 @@ export default {
 
 <style scoped lang="less">
 .loan {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 50px);
   overflow-y: scroll;
   .loan_title{
-    height: 300px;
+    height: 544/2.88px;
     background:  center center no-repeat;
     background-size: 100% 100%;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 20/2.88px 20/2.88px;
     text-align: left;
-    padding-left: 30px;
-    padding-top: 20px;
+    padding-left: 90/2.88px;
+    padding-top: 17/2.88px;
     box-sizing: border-box;
     span{
-      font-size: 30px;
+      font-size: 54/2.88px;
       color: #fff;
-      padding-top: 10px;
+      padding-top: 17/2.88px;
       position: relative;
       &:first-child{
-        margin-right: 40px;
+        margin-right: 40/2.88px;
       }
     }
     .active{
       padding-top: 0;
-      font-size: 40px;
+      font-size: 70/2.88px;
       font-weight: bold;
       &::after{
         content: "";
-        height: 8px;
-        width: 70px;
+        height: 11/2.88px;
+        width: 94/2.88px;
         background-color: #fff;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        bottom: -20px;
+        bottom: -20/2.88px;
         z-index: 1;
-        border-radius: 8px;
+        border-radius: 8/2.88px;
       }
     }
   }
   .title{
+    // margin-top: -15/2.88px;
     background-color: #ffffff;
     width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding-bottom: 30px;
-    padding-top: 30px;
+    padding-bottom: 64/2.88px;
+    padding-top: 60/2.88px;
     img{
-      width: 20px;
-      height: 20px;
+      width: 39/2.88px;
+      height: 39/2.88px;
     }
     p{
-      font-size: 30px;
-      padding: 0 10px;
+      font-size: 50/2.88px;
+      padding: 0 34/2.88px;
     }
   }
   .product_banner{
     background: #fff;
     .top{
-      padding: 0 100px 0 50px;
+      padding: 0 147/2.88px 0 71/2.88px;
       display: flex;
       justify-content: space-between;
       .left{
         display: flex;
         align-items: center;
         img{
-          width: 30px;
-          height: 30px;
-          margin-right: 10px;
+          width: 46/2.88px;
+          height: 46/2.88px;
+          margin-right: 10/2.88px;
         }
         p{
-          font-size: 24px;
+          font-size: 47/2.88px;
           font-weight: bold;
         }
       }
       .right{
         img{
-          width: 100%;
+          width: 174/2.44px;
+          height: 65/2.44px;
         }
         
       }
     }
     .center{
-      margin-top: 20px;
+      margin-top: 49/2.88px;
       display: flex;
       justify-content: space-between;
-      padding: 0 70px 0 50px;
-      margin-bottom: 10px;
+      padding: 0 103/2.88px 0 71/2.88px;
+      margin-bottom: 46/2.88px;
       .left{
         span:first-child{
-          font-size: 50px;
+          font-size: 91/2.88px;
           font-weight: bold;
           color: #FF8D4E;
         }
         span:nth-of-type(2){
-          font-size: 30px;
+          font-size: 39/2.88px;
           font-weight: bold;
         }
       }
       .right{
-        width: 160px;
-        height: 50px;
-        font-size: 24px;
-        border-radius: 50px;
+        width: 258/2.88px;
+        height: 80/2.88px;
+        font-size: 38/2.88px;
+        border-radius: 50/2.88px;
         border: none;
         color: #fff;
       }
     }
     &>p{
-      padding-left: 50px;
+      padding-left: 71/2.88px;
       text-align: left;
-      padding-bottom: 50px;
+      font-size: 35/2.44px;
+      padding-bottom: 77/2.88px;
     }
   }
   .daikuan{
@@ -198,76 +200,75 @@ export default {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding-bottom: 30px;
-    border: none;
+    padding-bottom: 64/2.88px;
+    padding-top: 60/2.88px;
     img{
-      width: 20px;
-      height: 20px;
+      width: 39/2.88px;
+      height: 39/2.88px;
     }
     p{
-      font-size: 30px;
-      padding: 0 10px;
+      font-size: 50/2.88px;
+      padding: 0 34/2.88px;
     }
   }
   .product_list{
-    padding: 25px;
-    background-color: #ffffff;
-    li{
-      padding:  10px 20px;
-      box-shadow: 0px 2px 15px 0px rgba(35,24,21,0.1);
-      border-radius: 16px;
-      margin-bottom: 30px;
-      img{
-        width: 80px;
-        height: 80px;
-        border-radius: 20px;
-      }
-      .name_range{
-        flex: 1;
-        margin-left: 20px;
-        flex-direction: column;
-        align-items: flex-start;
-        .name{
-          display: flex;
-          align-items: center;
-          margin-bottom: 10px;
-          &>p{
-            font-size: 28px;
-            max-width: 70%;
-            text-align: left;
-            margin-right: 20px;
-          }
-          &>div{
+    padding: 0 44/2.88px  43/2.44px;
+      background-color: #ffffff;
+      li{
+        padding:  19/2.88px 33/2.88px 21/2.44px;
+        box-shadow: 0/2.88px 2/2.88px 15/2.88px 0/2.88px rgba(35,24,21,0.1);
+        border-radius: 10px;
+        margin-bottom: 13/2.88px;
+        img{
+          width: 115/2.88px;
+          height: 115/2.88px;
+          border-radius: 20/2.88px;
+        }
+        .name_range{
+          flex: 1;
+          margin-left: 34/2.88px;
+          flex-direction: column;
+          align-items: flex-start;
+          .name{
             display: flex;
-            align-items: center;
-            padding: 5px 10px;
-            background: rgb(59, 59, 59);
-            border-radius: 13px;
-            img{
-              width: 20px;
-              height: 20px;
-              margin-right: 8px;
-              vertical-align: top;
+            align-items: flex-start;
+            p{
+              font-size: 45/2.88px;
+              margin-bottom: 17/2.88px;
+              width: 70%;
+              text-align: left;
             }
-            span{
-              font-size: 14px;
-              color: #fff;
+            &>div{
+              width: 132/2.44px;
+              height: 42/2.44px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: #353633;
+              border-radius: 42/2.44px;
+              img{
+                width: 23/2.44px;
+                height: 23/2.44px;
+              }
+              span{
+                color: #ffffff;
+                font-size: 19/2.44px;
+              }
             }
           }
+          .range{
+            color: #E91018;
+            font-size: 36/2.88px;
+          }
         }
-        .range{
-          color: #E91018;
-          font-size: 26px;
+        .right{
+          p{
+            margin-right: 48/2.88px;
+            font-size: 40/2.88px;
+            color: #999999;
+          }
         }
       }
-      .right{
-        p{
-          margin-right: 20px;
-          font-size: 24px;
-          color: #999999;
-        }
-      }
-    }
   }
 }
 </style>

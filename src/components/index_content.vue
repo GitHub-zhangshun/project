@@ -91,16 +91,16 @@ export default {
 
 <style scoped lang="less">
 .indexContent {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 50px);
   overflow-y: scroll;
   .swiper-container {
     width: 100%;
-    height: 400px;
+    height: 628/2.88px;
     .swiper-wrapper {
       .swiper-slide {
         img {
           width: 100%;
-          height: 400px;
+          height: 628/2.88px;
         }
       }
     }
@@ -109,73 +109,73 @@ export default {
     z-index: 1;
     background-color: #ffffff;
     position: relative;
-    top: -30px;
-    border-radius: 40px 40px 0 0;
-    padding: 40px 40px;
+    top: -30/2.88px;
+    border-radius: 40/2.88px 40/2.88px 0 0;
+    padding: 47/2.88px 62/2.88px 53/2.88px;
     overflow: hidden;
     li {
       flex-direction: column;
       img {
-        border-radius: 30px;
+        border-radius: 20px;
         overflow: hidden;
-        margin-bottom: 10px;
-        width: 80px;
-        height: 80px;
+        margin-bottom: 28/2.88px;
+        width: 152/2.88px;
+        height: 152/2.88px;
       }
       p {
-        font-size: 26px;
+        font-size: 37/2.88px;
       }
     }
   }
   .title{
-    margin-top: -15px;
+    margin-top: -15/2.88px;
     background-color: #ffffff;
     width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding-bottom: 30px;
-    padding-top: 30px;
+    padding-bottom: 64/2.88px;
+    padding-top: 58/2.88px;
     img{
-      width: 20px;
-      height: 20px;
+      width: 39/2.88px;
+      height: 39/2.88px;
     }
     p{
-      font-size: 26px;
-      padding: 0 10px;
+      font-size: 50/2.88px;
+      padding: 0 34/2.88px;
     }
   }
   .product_list{
-      padding: 25px;
+      padding: 0 44/2.88px  43/2.44px;
       background-color: #ffffff;
       li{
-        padding:  10px 20px;
-        box-shadow: 0px 2px 15px 0px rgba(35,24,21,0.1);
-        border-radius: 16px;
-        margin-bottom: 30px;
+        padding:  19/2.88px 33/2.88px 21/2.44px;
+        box-shadow: 0/2.88px 2/2.88px 15/2.88px 0/2.88px rgba(35,24,21,0.1);
+        border-radius: 10px;
+        margin-bottom: 13/2.88px;
         img{
-          width: 80px;
-          height: 80px;
-          border-radius: 20px;
+          width: 115/2.88px;
+          height: 115/2.88px;
+          border-radius: 20/2.88px;
         }
         .name_range{
           flex: 1;
-          margin-left: 20px;
+          margin-left: 34/2.88px;
           flex-direction: column;
           align-items: flex-start;
           .name{
-            font-size: 28px;
-            margin-bottom: 10px;;
+            font-size: 45/2.88px;
+            margin-bottom: 17/2.88px;;
           }
           .range{
             color: #E91018;
-            font-size: 26px;
+            font-size: 36/2.88px;
           }
         }
         .right{
           p{
-            margin-right: 20px;
-            font-size: 24px;
+            margin-right: 48/2.88px;
+            font-size: 40/2.88px;
             color: #999999;
           }
         }
