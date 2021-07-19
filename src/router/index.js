@@ -45,6 +45,11 @@ const routes = [{
         meta: {
             title: '登录'
         }
+    },
+    {
+        path: '/form',
+        name: 'form',
+        component: () => import ('../views/form.vue'),
     }
 ]
 

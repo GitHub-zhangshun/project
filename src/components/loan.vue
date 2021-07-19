@@ -239,7 +239,7 @@ export default {
               text-align: left;
             }
             &>div{
-              width: 132/2.44px;
+              width: 160/2.44px;
               height: 42/2.44px;
               display: flex;
               justify-content: center;
