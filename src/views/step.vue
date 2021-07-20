@@ -105,6 +105,28 @@
         <button>下一步</button>
       </div>
       <div class="step_2" v-if="step==1">
+        <ul class="top">
+          <li>
+            <div class="title">借多少(5-100万元)</div>
+            <div class="bottom">
+              <div class="input">
+                <input type="text">万元
+              </div>
+              <img src="@/assets/images/bianji.png" alt="">
+            </div>
+            
+          </li>
+          <li>
+            <div class="title">借多久(3-60个月)</div>
+            <div class="bottom">
+              <div class="input">
+                <input type="text" style="border-bottom: 1px solid #fc7513;" readonly>个月
+              </div>
+              <span class="icon iconfont icon-arrow-right"></span>
+            </div>
+            
+          </li>
+        </ul>
         <ul class="problem">
           <li>
             <span>真实姓名</span>
@@ -274,7 +296,7 @@ import { areaList } from '@vant/area-data';
       font-size: 30/2.44px;
     }
   }
-  .bottom{
+  &>.bottom{
     height: calc(100vh - 181px);
     overflow-y: scroll;
     .step_1{
@@ -333,6 +355,47 @@ import { areaList } from '@vant/area-data';
       display: flex;
       flex-direction: column;
       align-items: center;
+      &>.top{
+        width: 100%;
+        padding: 0 66/2.44px 96/2.44px 60/2.44px;
+        display: flex;
+        box-sizing: border-box;
+        justify-content: space-between;
+        li{
+          width: 35%;
+          .title{
+            font-size: 33/2.44px;
+            font-weight: bold;
+            margin-bottom: 28/2.44px;
+          }
+          .bottom{
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            .input{
+              display: flex;
+              align-items: baseline;
+              color: #fc7513;
+              font-size: 32/2.44px;
+              input{
+                font-size: 64/2.44px;
+                font-weight: bold;
+                width: 50%;
+                border: none;
+                // color: #fc7513;
+              }
+            }
+            img{
+              width: 39/2.44px;
+              height: 39/2.44px;
+            }
+            span{
+              color: #c3c3c3;
+            }
+            
+          }
+        }
+      }
       .problem{
         width: 100%;
         box-sizing: border-box;
