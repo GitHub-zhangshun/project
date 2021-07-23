@@ -1,8 +1,8 @@
 <template>
   <div class="loan">
     <div class="loan_title" :style="{backgroundImage:'url(https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg)'}">
-      <span :class="flag?'active' : ''" @click="active='1'">急速贷</span>
-      <span :class="!flag?'active' : ''" @click="active='2'">大额贷</span>
+      <span :class="flag?'active' : ''" @click="active='1',request(1)">急速贷</span>
+      <span :class="!flag?'active' : ''" @click="active='2',request(2)">大额贷</span>
     </div>
     <div class="title">
       <img src="@/assets/images/xinhao3.png" alt="" v-if="active=='1'"/>
@@ -24,10 +24,10 @@
       </div>
       <div class="center">
         <div class="left">
-          <span>1231321</span>
+          <span>{{money}}</span>
           <span>&yen;</span>
         </div>
-        <button class="right" :style="{backgroundColor:active==1?'#346FE4':'#FF8D4E'}">立即完善</button>
+        <button class="right" :style="{backgroundColor:active==1?'#346FE4':'#FF8D4E'}" @click="$router.push('/step')">立即完善</button>
       </div>
       <p>完善资料最高可激活</p>
     </div>
@@ -39,20 +39,20 @@
       <img src="@/assets/images/xinhao6.png" alt="" v-else/>
     </div>
     <ul class="product_list">
-      <li class="flex_center_center" v-for="(item, index) in 5" :key="index">
-        <img  src="https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg"/>
+      <li class="flex_center_center" v-for="(item, index) in hotProduct" :key="index" @click="$router.push({path:'/productDetail',query:{id:item.id}})">
+        <img :src="item.logo"/>
         <div class="name_range flex_center_center">
           <div class="name">
-            <p>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
-            <div>
+            <p>{{item.title}}</p>
+            <div v-if="false">
               <img src="@/assets/images/huangguan.png" alt="">
               <span>会员专享</span>
             </div>
           </div>
-          <p class="range">1万~3万</p>
+          <p class="range">{{item.money_min}}万~{{item.money_max}}万</p>
         </div>
         <div class="right flex_center_center">
-          <p>消费借贷</p>
+          <p>{{item.text}}</p>
           <span class="icon iconfont icon-arrow-right"></span>
         </div>
       </li>
@@ -65,12 +65,48 @@ export default {
   name: "loan",
   data() {
     return {
-      active:'1'
+      active:'1',
+      hotProduct:[],
+      ext:[],
+      type:[
+        {id:0,text:'未设置'},
+        {id:1,text:'大额信用贷'},
+        {id:2,text:'信用贷产品'},
+        {id:3,text:'低息信用贷'},
+        {id:4,text:'消费借贷'},
+        {id:5,text:'信用分期贷'},
+        {id:6,text:'极速分期贷'},
+        {id:7,text:'极速消费贷'},
+        {id:8,text:'消费生活贷'},
+        {id:9,text:'消费分期贷'}
+      ],
+      money:JSON.parse(localStorage.getItem('userInfo')).money
     };
   },
   computed:{
     flag(){
       return this.active == '1'
+    }
+  },
+  mounted() {
+    this.request(this.active)
+  },
+  methods: {
+    request(active){
+      this.hotProduct = []
+      this.ext = []
+      this.$axios({
+        method: "get",
+        url: `/product/products?item=${active}`,
+      }).then((res) => {
+        if(res.data.status == 200 ){
+          res.data.data.forEach( item => {
+            item.text = this.type.find(i => i.id == item.type).text
+          })
+          this.hotProduct = res.data.data
+          this.ext = res.data.ext
+        }
+      })
     }
   },
 };
@@ -80,6 +116,7 @@ export default {
 .loan {
   height: calc(100vh - 50px);
   overflow-y: scroll;
+  background: #fff;
   .loan_title{
     height: 544/2.88px;
     background:  center center no-repeat;
@@ -230,6 +267,7 @@ export default {
           flex-direction: column;
           align-items: flex-start;
           .name{
+            width: 100%;
             display: flex;
             align-items: flex-start;
             p{

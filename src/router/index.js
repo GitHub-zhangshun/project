@@ -20,8 +20,10 @@ const routes = [{
             name: "loan",
             component: () => import ('@/components/loan.vue'),
             meta: {
-                title: '贷款'
-            }
+                title: '贷款',
+                requireAuth: true
+            },
+
         },{
             path: "credit",
             name: "credit",
@@ -50,6 +52,25 @@ const routes = [{
         path: '/step',
         name: 'step',
         component: () => import ('../views/step.vue'),
+        meta: {
+            title: '完善资料'
+        }
+    },
+    {
+        path: '/agreement',
+        name: 'agreement',
+        component: () => import ('../views/agreement.vue'),
+        meta: {
+            title: '用户须知'
+        }
+    },
+    {
+        path: '/productDetail',
+        name: 'productDetail',
+        component: () => import ('../views/productDetail.vue'),
+        meta: {
+            title: '详细信息'
+        }
     }
 ]
 

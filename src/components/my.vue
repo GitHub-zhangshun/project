@@ -2,11 +2,11 @@
   <div class="my">
     <div class="top">
       <div class="left">
-        <img src="https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg" alt="">
-        <span>未开通会员</span>
+        <img :src="userInfo.face_image_big || 'http://static.scynb.cn/im/head/default.jpg'" alt="">
+        <span v-if="false">未开通会员</span>
       </div>
-      <p class="phone">1111111111</p>
-      <p class="renzhen">实名认证>></p>
+      <p class="phone">{{userInfo.username || '未登录'}}</p>
+      <p class="renzhen" @click="$router.push('/step')">实名认证>></p>
     </div>
     <ul class="menu">
       <li>
@@ -22,7 +22,7 @@
         <span>信用报告</span>
       </li>
     </ul>
-    <div class="vip">
+    <div class="vip" v-if="false">
       <div class="left">
         <img src="@/assets/images/huangguan1.png" alt="">
         <span>黑金VIP·开通享受专属下款通道</span>
@@ -79,7 +79,7 @@
         </li>
       </ul>
     </div>
-    <button>退出登录</button>
+    <button v-if="userInfo" @click="logout">退出登录</button>
   </div>
 </template>
 
@@ -88,8 +88,14 @@ export default {
   name: "my",
   data() {
     return {
-      
+      userInfo:JSON.parse(localStorage.getItem('userInfo')) || ''
     };
+  },
+  methods: {
+    logout(){
+      localStorage.removeItem('userInfo')
+      this.$router.push('/')
+    },
   },
 };
 </script>
@@ -122,9 +128,11 @@ export default {
     .left{
       position: relative;
       margin-right: 35/2.44px;
+      width: 160/2.44px;
+      height: 160/2.44px;
       img{
-        width: 160/2.44px;
-        height: 160/2.44px;
+        width: 100%;
+        height: 96%;
         border-radius: 100%;
       }
       span{
@@ -179,7 +187,7 @@ export default {
     }
   }
   .vip{
-    margin: 32/2.44px 34/2.44px;
+    margin: 32/2.44px 34/2.44px 0;
     background: #000;
     border-radius: 10/2.44px;
     display: flex;
@@ -209,7 +217,7 @@ export default {
     }
   }
   .tools{
-    margin: 0 20/2.44px 46/2.44px;
+    margin: 32/2.44px 20/2.44px 46/2.44px;
     background: #fff;
     border-radius: 10/2.44px;
     padding: 52/2.44px 0 43/2.44px 40/2.44px;

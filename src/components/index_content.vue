@@ -1,41 +1,19 @@
 <template>
   <div class="indexContent">
     <swiper ref="mySwiper" :options="swiperOptions">
-      <swiper-slide>
-        <img
-          src="https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg"
-          alt=""
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg"
-          alt=""
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg"
-          alt=""
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg"
-          alt=""
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg"
-          alt=""
-        />
+      <swiper-slide v-for="(item, index) in img" :key="index">
+        <img :src="item.image" :alt="item.description"/>
       </swiper-slide>
     </swiper>
     <ul class="product flex_between_center">
-      <li class="flex_between_center" v-for="(item, index) in 4" :key="index">
-        <img src="https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg"/>
-        <p>啊啊啊啊</p>
+      <li class="flex_between_center" v-for="(item, index) in product" :key="index">
+        <div :class="`index_${index}`">
+          <img src="@/assets/images/index_0.png" v-if="index==0"/>
+          <img src="@/assets/images/index_1.png" v-if="index==1"/>
+          <img src="@/assets/images/index_2.png" v-if="index==2"/>
+          <img src="@/assets/images/index_3.png" v-if="index==3"/>
+        </div>
+        <p>{{item}}</p>
       </li>
     </ul>
     <div class="title">
@@ -44,15 +22,14 @@
       <img src="@/assets/images/xinhao.png" alt="" />
     </div>
     <ul class="product_list">
-      <li class="flex_center_center" v-for="(item, index) in 5" :key="index">
-        <img
-          src="https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg"/>
+      <li class="flex_center_center" v-for="(item, index) in product_list" :key="index" @click="$router.push({path:'/productDetail',query:{id:item.id}})">
+        <img :src="item.logo"/>
         <div class="name_range flex_center_center">
-          <p class="name">啊啊啊</p>
-          <p class="range">1万~3万</p>
+          <p class="name">{{item.title}}</p>
+          <p class="range">{{item.edu}}</p>
         </div>
         <div class="right flex_center_center">
-          <p>消费借贷</p>
+          <p>{{item.type}}</p>
           <span class="icon iconfont icon-arrow-right"></span>
         </div>
       </li>
@@ -74,18 +51,43 @@ export default {
   data() {
     return {
       swiperOptions: {
-        // // 改变swiper样式时，自动初始化swiper
-        // observer: true,
-        // // 监测swiper父元素，如果有变化则初始化swiper
-        // observeParents: true,
         autoplay: {
           delay: 2000,
           disableOnInteraction: false,
         },
         loop: true, // 循环模式选项
       },
+      img:[],
+      product:[],
+      product_list:[]
     };
   },
+  mounted() {
+    this.$axios({
+      method: "get",
+      url: "/banner/banners",
+    }).then((res) => {
+      if(res.data.status == 200 ){
+        this.img = res.data.data
+      }
+    })
+    this.$axios({
+      method: "get",
+      url: "/conf/app",
+    }).then((res) => {
+      if(res.data.status == 200 ){
+        this.product = res.data.data.index
+      }
+    })
+    this.$axios({
+      method: "get",
+      url: "/product/top",
+    }).then((res) => {
+      if(res.data.status == 200 ){
+        this.product_list = res.data.data
+      }
+    })
+  },  
 };
 </script>
 
@@ -115,12 +117,31 @@ export default {
     overflow: hidden;
     li {
       flex-direction: column;
-      img {
+      &>div {
         border-radius: 20px;
         overflow: hidden;
         margin-bottom: 28/2.88px;
         width: 152/2.88px;
         height: 152/2.88px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.index_0{
+          background: #4d84f3;
+        }
+        &.index_1{
+          background: #ff7b51;
+        }
+        &.index_2{
+          background: #45d1b1;
+        }
+        &.index_3{
+          background: #ff7975;
+        }
+        img{
+          width: 85/2.88px;
+          height: 85/2.88px;
+        }
       }
       p {
         font-size: 37/2.88px;

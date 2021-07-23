@@ -22,7 +22,7 @@
         <span :class="step===2?'color000':''">审核放款</span>
       </li>
     </ul>
-    <p class="tips">
+    <p class="tips" v-if="step!==2">
       <img src="@/assets/images/AI.png" alt="">
       <span v-if="step==0">小用AI:耐心填完资料,才能获得低利率的贷款</span>
       <span v-if="step==1">小用AI:恶意填写虚假资料,可能影响您的信用</span>
@@ -44,7 +44,6 @@
               <input type="text" :value="zhiye_value" placeholder="请选择" readonly @click="popupClick('zhiye')">
               <van-icon name="play" />
             </div>
-            
           </li>
           <li v-if="zhiye_value=='上班族' || zhiye_value=='事业单位/公务员'">
             <span>工资发放形式</span>
@@ -102,7 +101,7 @@
             </div>
           </li>
         </ul>
-        <button>下一步</button>
+        <button @click="next(1)">下一步</button>
       </div>
       <div class="step_2" v-if="step==1">
         <ul class="top">
@@ -110,7 +109,7 @@
             <div class="title">借多少(5-100万元)</div>
             <div class="bottom">
               <div class="input">
-                <input type="text">万元
+                <input type="text" v-model="jds_value">万元
               </div>
               <img src="@/assets/images/bianji.png" alt="">
             </div>
@@ -120,21 +119,130 @@
             <div class="title">借多久(3-60个月)</div>
             <div class="bottom">
               <div class="input">
-                <input type="text" style="border-bottom: 1px solid #fc7513;" readonly>个月
+                <input v-model="jdj_value" type="text" @click="popupClick('jdj')" style="border-bottom: 1px solid #fc7513;" readonly>个月
               </div>
               <span class="icon iconfont icon-arrow-right"></span>
             </div>
             
           </li>
         </ul>
-        <ul class="problem">
+        <ul class="personal_info">
+          <li style="justify-content: flex-start;">
+            <img src="@/assets/images/caidan.png" alt="">
+            <p>个人信息</p>
+          </li>
           <li>
-            <span>真实姓名</span>
-            <input type="text" v-model="name_value" placeholder="请输入姓名">
+            <span>文化程度</span>
+            <div>
+              <input type="text" :value="whcd_value" placeholder="请选择" readonly @click="popupClick('whcd')">
+              <van-icon name="play" />
+            </div>
+          </li>
+          <li>
+            <span>借款用途</span>
+            <div>
+              <input type="text" :value="jkyt_value" placeholder="请选择" readonly @click="popupClick('jkyt')">
+              <van-icon name="play" />
+            </div>
           </li>
         </ul>
+        <ul class="personal_info">
+          <li style="justify-content: flex-start;">
+            <img src="@/assets/images/caidan.png" alt="">
+            <p>资产信息</p>
+          </li>
+          <li>
+            <span>社保缴纳</span>
+            <div>
+              <input type="text" :value="sbjn_value" placeholder="请选择" readonly @click="popupClick('sbjn')">
+              <van-icon name="play" />
+            </div>
+          </li>
+          <li>
+            <span>公积金缴纳</span>
+            <div>
+              <input type="text" :value="gjjjn_value" placeholder="请选择" readonly @click="popupClick('gjjjn')">
+              <van-icon name="play" />
+            </div>
+          </li>
+          <li>
+            <span>房产情况</span>
+            <div>
+              <input type="text" :value="fcqk_value" placeholder="请选择" readonly @click="popupClick('fcqk')">
+              <van-icon name="play" />
+            </div>
+          </li>
+          <li>
+            <span>全款房</span>
+            <div>
+              <input type="text" :value="qkf_value" placeholder="请选择" readonly @click="popupClick('qkf')">
+              <van-icon name="play" />
+            </div>
+          </li>
+          <li>
+            <span>车辆情况</span>
+            <div>
+              <input type="text" :value="clqk_value" placeholder="请选择" readonly @click="popupClick('clqk')">
+              <van-icon name="play" />
+            </div>
+          </li>
+          <li>
+            <span>全款车</span>
+            <div>
+              <input type="text" :value="qkc_value" placeholder="请选择" readonly @click="popupClick('qkc')">
+              <van-icon name="play" />
+            </div>
+          </li>
+          <li>
+            <span>保单情况</span>
+            <div>
+              <input type="text" :value="bdqk_value" placeholder="请选择" readonly @click="popupClick('bdqk')">
+              <van-icon name="play" />
+            </div>
+          </li>
+          <li>
+            <span>微粒贷额度</span>
+            <div>
+              <input type="text" :value="wlded_value" placeholder="请选择" readonly @click="popupClick('wlded')">
+              <van-icon name="play" />
+            </div>
+          </li>
+        </ul>
+        <ul class="personal_info">
+          <li style="justify-content: flex-start;">
+            <img src="@/assets/images/caidan.png" alt="">
+            <p>信用信息</p>
+          </li>
+          <li>
+            <span>信用卡总额度</span>
+            <div>
+              <input type="text" :value="xykzed_value" placeholder="请选择" readonly @click="popupClick('xykzed')">
+              <van-icon name="play" />
+            </div>
+          </li>
+          <li>
+            <span>芝麻分</span>
+            <div>
+              <input type="text" :value="zmf_value" placeholder="请选择" readonly @click="popupClick('zmf')">
+              <van-icon name="play" />
+            </div>
+          </li>
+          <li>
+            <span>逾期情况</span>
+            <div>
+              <input type="text" :value="yqqk_value" placeholder="请选择" readonly @click="popupClick('yqqk')">
+              <van-icon name="play" />
+            </div>
+          </li>
+        </ul>
+        <button @click="next(2)">下一步</button>
       </div>
-      <div class="bottom_tips">
+      <div class="step_3" v-if="step==2">
+        <img src="@/assets/images/chengong.png" alt="">
+        <span>信息提交成功，正在审核中</span>
+        <button @click="next(3)">返回首页</button>
+      </div>
+      <div class="bottom_tips" v-if="step!==2">
         <img src="@/assets/images/dun.png" alt="">
         <span>数据加密保护已启动,仅用于贷款申请,请放心填写</span>
       </div>
@@ -156,7 +264,7 @@
 </template>
 
 <script>
-import { Popup , Picker ,Icon , Area  } from 'vant';
+import { Popup , Picker ,Icon , Area , Toast  } from 'vant';
 import { areaList } from '@vant/area-data';
   export default {
     name:'step',
@@ -165,10 +273,11 @@ import { areaList } from '@vant/area-data';
       [Picker.name]:Picker,
       [Icon.name]:Icon,
       [Area.name]:Area,
+      [Toast.name]:Toast,
     },
     data() {
       return {
-        step:1,
+        step:0,
         type:null,
         showPicker: false,
         areaPopup:false,
@@ -193,7 +302,50 @@ import { areaList } from '@vant/area-data';
         duigong_value:'',
         yuejun_value:'',
         dizhi:areaList,
-        area_value:''
+        area_value:'',
+        jds_value:'5',
+
+        jdj:['3','6','12','24','36','60'],
+        jdj_value:'3',
+
+        whcd:['小学','初中','高中','中专','专科','本科','博士研究生'],
+        whcd_value:'',
+
+        jkyt:['日常消费','医疗借款','装修借款','购房','购车','结婚借款','旅游借款'],
+        jkyt_value:'',
+
+        sbjn:['无社保','未满六个月','六个月以上'],
+        sbjn_value:'',
+
+        gjjjn:['无公积金','未满六个月','六个月以上'],
+        gjjjn_value:'',
+
+        fcqk:['无房产','按揭房','全款房'],
+        fcqk_value:'',
+
+        qkf:['接受抵押','不接受抵押'],
+        qkf_value:'',
+
+        clqk:['全款车','按揭车','全款车'],
+        clqk_value:'',
+
+        qkc:['接受抵押','不接受抵押'],
+        qkc_value:'',
+
+        bdqk:['未买保险','缴纳未满1年','缴纳1年以上'],
+        bdqk_value:'',
+
+        wlded:['无微粒贷','5000以下','5000以上'],
+        wlded_value:'',
+
+        xykzed:['无信用卡','3千-5千','5千-1万','1万-2万','2万-3万','3万以上'],
+        xykzed_value:'',
+
+        zmf:['无芝麻分','600以下','600-649分','650-700分','700分以上'],
+        zmf_value:'',
+
+        yqqk:['无信用记录','信用良好无逾期','1年内无逾期','1年内有逾期','信用卡或贷款存在当前逾期'],
+        yqqk_value:'',
       }
     },
     watch:{
@@ -202,6 +354,169 @@ import { areaList } from '@vant/area-data';
       }
     },
     methods: {
+      next(val){
+        if(val == 1){
+          if(this.name_value == ''){
+            Toast('请输入姓名');
+            return
+          }
+          if(this.icard_value == '' || !( /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/).test(this.icard_value)){
+            Toast('请输入正确身份证号');
+            return
+          }
+          if(this.zhiye_value == ''){
+            Toast('请选择职业类别');
+            return
+          }
+          if(this.zhiye_value == '上班族' || this.zhiye_value == '事业单位/公务员'){
+            if(this.gongzi_value == ''){
+              Toast('请选择工资发放形式');
+              return
+            }
+          }
+          if(this.zhiye_value == '上班族' || this.zhiye_value == '事业单位/公务员'){
+            if(this.gongling_value == ''){
+              Toast('请选择现单位工龄');
+              return
+            }
+          }
+          if(this.zhiye_value == '上班族' || this.zhiye_value == '个体户' || this.zhiye_value == '自由职业' || this.zhiye_value == '事业单位/公务员'){
+            if(this.shouru_value == ''){
+              Toast('请选择月收入');
+              return
+            }
+          }
+          if(this.zhiye_value == '企业主' || this.zhiye_value == '个体户'){
+            if(this.nianxian_value == ''){
+              Toast('请选择营业执照注册年限');
+              return
+            }
+          }
+          if(this.zhiye_value == '企业主'){
+            if(this.duigong_value == ''){
+              Toast('请输入对公账户经营收入');
+              return
+            }
+          }
+          if(this.zhiye_value == '企业主' || this.zhiye_value == '个体户'){
+            if(this.yuejun_value == ''){
+              Toast('请输入近一年月均经营流水');
+              return
+            }
+          }
+          if(this.area_value == ''){
+            Toast('请选择所在城市');
+            return
+          }
+          this.step = 1
+        }
+        if(val == 2){
+          if(this.jds_value == ''){
+            Toast('请输入借多少');
+            return
+          }
+          if(this.jdj_value == ''){
+            Toast('请选择借多久');
+            return
+          }
+          if(this.whcd_value == ''){
+            Toast('请选择文化程度');
+            return
+          }
+          if(this.jkyt_value == ''){
+            Toast('请选择借款用途');
+            return
+          }
+          if(this.sbjn_value == ''){
+            Toast('请选择社保缴纳');
+            return
+          }
+          if(this.gjjjn_value == ''){
+            Toast('请选择公积金缴纳');
+            return
+          }
+          if(this.fcqk_value == ''){
+            Toast('请选择房产情况');
+            return
+          }
+          if(this.qkf_value == ''){
+            Toast('请选择全款房');
+            return
+          }
+          if(this.clqk_value == ''){
+            Toast('请选择车辆情况');
+            return
+          }
+          if(this.qkc_value == ''){
+            Toast('请选择全款车');
+            return
+          }
+          if(this.bdqk_value == ''){
+            Toast('请选择保单情况');
+            return
+          }
+          if(this.wlded_value == ''){
+            Toast('请选择微粒贷额度');
+            return
+          }
+          if(this.xykzed_value == ''){
+            Toast('请选择信用卡总额度');
+            return
+          }
+          if(this.zmf_value == ''){
+            Toast('请选择芝麻分');
+            return
+          }
+          if(this.yqqk_value == ''){
+            Toast('请选择逾期情况');
+            return
+          }
+          let params = {
+            name_value:this.name_value,
+            icard_value:this.icard_value,
+            zhiye_value:this.zhiye_value,
+            gongzi_value:this.gongzi_value,
+            gongling_value:this.gongling_value,
+            shouru_value:this.shouru_value,
+            nianxian_value:this.nianxian_value,
+            duigong_value:this.duigong_value,
+            yuejun_value:this.yuejun_value,
+            area_value:this.area_value,
+            jds_value:this.jds_value,
+            jdj_value:this.jdj_value,
+            whcd_value:this.whcd_value,
+            jkyt_value:this.jkyt_value,
+            sbjn_value:this.sbjn_value,
+            gjjjn_value:this.gjjjn_value,
+            fcqk_value:this.fcqk_value,
+            qkf_value:this.qkf_value,
+            clqk_value:this.clqk_value,
+            qkc_value:this.qkc_value,
+            bdqk_value:this.bdqk_value,
+            wlded_value:this.wlded_value,
+            xykzed_value:this.xykzed_value,
+            zmf_value:this.zmf_value,
+            yqqk_value:this.yqqk_value,
+          }
+          this.$axios({
+            method: "post",
+            url: `/user/ext`,
+            data:{
+              ...params,
+              uid:JSON.parse(localStorage.getItem('userInfo')).id
+            }
+          }).then((res) => {
+            if(res.data.status == 200 ){
+              this.step = 2
+            }else{
+              Toast(res.data.msg)
+            }
+          })
+        }
+        if(val == 3){
+          this.$router.push('/')
+        }
+      },
       popupClick(type){
         this.type = type
         this.showPicker = true
@@ -349,6 +664,7 @@ import { areaList } from '@vant/area-data';
         background: #4399e5;
         color: #ffffff;
         font-size: 42/2.44px;
+        font-size: 34/2.44px;
       }
     }
     .step_2{
@@ -381,6 +697,7 @@ import { areaList } from '@vant/area-data';
                 font-size: 64/2.44px;
                 font-weight: bold;
                 width: 50%;
+                text-align: center;
                 border: none;
                 // color: #fc7513;
               }
@@ -396,13 +713,22 @@ import { areaList } from '@vant/area-data';
           }
         }
       }
-      .problem{
+      .personal_info{
         width: 100%;
         box-sizing: border-box;
         padding: 0 60/2.44px 87/2.44px;
         li{
           display: flex;
           justify-content: space-between;
+          align-items: center;
+          img{
+            width: 36/2.44px;
+            height: 36/2.44px;
+            margin-right: 10/2.44px;
+          }
+          &>P{
+            font-size: 44/2.44px;
+          }
           span{
             font-size: 36/2.44px;
           }
@@ -441,10 +767,37 @@ import { areaList } from '@vant/area-data';
         border: none;
         background: #4399e5;
         color: #ffffff;
-        font-size: 42/2.44px;
+        margin-bottom: 20/2.44px;
+        font-size: 34/2.44px;
+      }
+    }
+    .step_3{
+      height: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      img{
+        width: 200/2.44px;
+        height: 200/2.44px;
+        margin-bottom: 20/2.44px;
+      }
+      span{
+        font-size: 30/2.44px;
+      }
+      button{
+        width: 95%;
+        height: 132/2.44px;
+        margin: 87/2.44px auto 0;
+        border-radius: 132/2.44px;
+        border: none;
+        background: #4399e5;
+        color: #ffffff;
+        font-size: 34/2.44px;
       }
     }
     .bottom_tips{
+      margin-top: 20/2.44px;
       display: flex;
       align-items: center;
       justify-content: center;

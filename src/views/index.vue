@@ -32,7 +32,7 @@ export default {
   name: "index",
   data() {
     return {
-      active:this.$route.name
+      active:this.$route.name,
     }
   },
   methods:{

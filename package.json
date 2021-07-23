@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "@vant/area-data": "^1.1.1",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "js-cookie": "^2.2.1",
     "lib-flexible": "^0.3.2",
     "postcss-px2rem": "^0.3.0",
     "swiper": "^6.7.5",
