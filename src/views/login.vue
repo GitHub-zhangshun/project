@@ -22,10 +22,22 @@ export default {
   data() {
     return {
       checked:true,
-      username:''
+      username:'',
+      front_conf:''
     }
   },
   mounted() {
+    if(this.$route.query.code){
+      this.$axios({
+        method: "get",
+        url: "/channel/info",
+        params:{code:this.$route.query.code}
+      }).then((res) => {
+        if(res.data.status == 200){
+          this.front_conf = res.data.data
+        }
+      })
+    }
   },
   methods:{
     agreement(val){
@@ -44,26 +56,21 @@ export default {
       this.$axios({
         method: "post",
         url: "/user/registOrLogin",
-        data:{username:this.username,channel_id:'1'}
+        data:{username:this.username,channel_id:this.front_conf.id}
       }).then((res) => {
         let result = res.data
         if(result.status == 200 ){
-          Dialog.confirm({
-            title: '提示',
-            message: '立即完善资料',
-            confirmButtonText:'去完善'
-          })
-          .then(() => {
-            this.$router.replace('/step')
-          })
-          .catch(() => {
-            if(this.$route.query.redirect){
-              this.$router.replace(this.$route.query.redirect)
-            }else{
-              this.$router.replace('/')
-            }
-          });
           localStorage.setItem('userInfo',JSON.stringify(result.data))
+          if(this.front_conf.front_conf == 1){
+            window.location.href = this.front_conf.app_download
+          } else if(this.front_conf.front_conf == 2){
+            this.$router.push('/indexContent')
+          } else if(this.front_conf.front_conf == 3){
+            this.$router.replace({path:'/step',query:{url:this.front_conf.app_download}})
+          }else{
+            this.$router.replace({path:'/indexContent'})
+          }
+          
         }
       })
     },

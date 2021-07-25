@@ -240,7 +240,7 @@
       <div class="step_3" v-if="step==2">
         <img src="@/assets/images/chengong.png" alt="">
         <span>信息提交成功，正在审核中</span>
-        <button @click="next(3)">返回首页</button>
+        <button @click="next(3)">确定</button>
       </div>
       <div class="bottom_tips" v-if="step!==2">
         <img src="@/assets/images/dun.png" alt="">
@@ -277,6 +277,7 @@ import { areaList } from '@vant/area-data';
     },
     data() {
       return {
+        url:this.$route.query.url,
         step:0,
         type:null,
         showPicker: false,
@@ -514,6 +515,10 @@ import { areaList } from '@vant/area-data';
           })
         }
         if(val == 3){
+          if(this.url){
+            window.location.href = this.url
+            return
+          }
           this.$router.push('/')
         }
       },

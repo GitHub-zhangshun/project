@@ -11,7 +11,8 @@ import Cookies from 'js-cookie'
 Vue.prototype.$axios = axios
 Vue.prototype.$cookies = Cookies
 
-axios.defaults.baseURL = '/api';
+// axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = 'http://api.zhynb.com/';
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';//配置请求头信息。
 
 Vue.config.productionTip = false
@@ -21,7 +22,7 @@ router.beforeEach((to, from, next) => {
     document.title = to.meta.title
   }
   if(to.meta.requireAuth && !localStorage.getItem('userInfo')){
-    next({path:'/login',query:{redirect:to.path}})
+    next({path:'/login'})
   }else{
     next()
   }

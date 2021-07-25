@@ -17,7 +17,7 @@
             <p>借多少({{detail.money_min}}-{{detail.money_max}}{{detail.money_unit}})</p>
             <div class="input">
               <div class="left">
-                <input type="text" v-model="jds">
+                <input type="text" v-model="jds" readonly>
                 <span>{{detail.money_unit}}</span>
               </div>
               <div class="right">
@@ -29,7 +29,7 @@
             <p>借多久({{detail.month_min}}-{{detail.month_max}}{{detail.month_unit}})</p>
             <div class="input">
               <div class="left">
-                <input type="text" v-model="jdj">
+                <input type="text" v-model="jdj" readonly>
                 <span>{{detail.month_unit}}</span>
               </div>
               <div class="right">
@@ -85,7 +85,7 @@
         </li>
       </ul>
     </div>
-    <van-button round type="info" color="#ffd437">圆形按钮</van-button>
+    <van-button round type="info" color="#ffd437" @click="preApply">立即申请</van-button>
   </div>
 </template>
 
@@ -99,7 +99,7 @@ import { Button , Toast} from 'vant';
     },
     data(){
       return{
-        jdj:'',
+        jdj:'12',
         jds:'',
         lv:0,
         hk:0,
@@ -108,10 +108,11 @@ import { Button , Toast} from 'vant';
     },
     watch:{
       jdj(){
-
+        this.hk = parseInt((((this.jds*10000)*(this.detail.rate/100)*this.jdj)+(this.jds*10000))/this.jdj) || 0
       },
       jds(){
-        
+        this.lv = parseInt((this.jds*10000) * (this.detail.rate/100)) || 0
+        this.hk = parseInt((((this.jds*10000)*(this.detail.rate/100)*this.jdj)+(this.jds*10000))/this.jdj) || 0
       }
     },
     mounted(){
@@ -127,12 +128,32 @@ import { Button , Toast} from 'vant';
           res.data.data['premis_text'] = res.data.data.premise.split(',')
           res.data.data['material_text'] = res.data.data.material.split(',')
           this.detail = res.data.data
-          this.jdj = res.data.data.month_min
+          // this.jdj = res.data.data.month_min
           this.jds = res.data.data.money_min
+          this.lv = parseInt((res.data.data.money_min*10000) * (res.data.data.rate/100))
+          this.hk = parseInt((((res.data.data.money_min*10000)*(res.data.data.rate/100)*12)+(res.data.data.money_min*10000))/12)
         }else{
           Toast(res.data.msg)
         }
       })
+    },
+    methods:{
+      preApply(){
+        this.$axios({
+        method: "post",
+        url: `/product/preApply`,
+        data:{
+          product_id:`${this.$route.query.id}`,
+          uid:JSON.parse(localStorage.getItem('userInfo')).id
+        }
+      }).then((res) => {
+        if(res.data.status == 200){
+          Toast('申请成功')
+        }else{
+          Toast(res.data.msg)
+        }
+      })
+      }
     }
   }
 </script>

@@ -7,13 +7,14 @@ const routes = [{
         path: '/',
         name: 'index',
         component: () => import ('@/views/index.vue'),
-        redirect:'indexContent',
+        redirect:'/indexContent',
         children: [{
             path: "indexContent",
             name: "indexContent",
             component: () => import ('@/components/index_content.vue'),
             meta: {
-                title: '首页'
+                title: '首页',
+                requireAuth: true
             }
         }, {
             path: "loan",
@@ -29,14 +30,16 @@ const routes = [{
             name: "credit",
             component: () => import ('@/components/credit.vue'),
             meta: {
-                title: '信用报告'
+                title: '信用报告',
+                requireAuth: true
             }
         },{
             path: "my",
             name: "my",
             component: () => import ('@/components/my.vue'),
             meta: {
-                title: '我的'
+                title: '我的',
+                requireAuth: true
             }
         }]
     },
@@ -69,7 +72,8 @@ const routes = [{
         name: 'productDetail',
         component: () => import ('../views/productDetail.vue'),
         meta: {
-            title: '详细信息'
+            title: '详细信息',
+            requireAuth: true
         }
     }
 ]
