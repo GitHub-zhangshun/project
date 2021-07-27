@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <img src="https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg" class="login_banner" alt="">
+    <img src="@/assets/images/4.png" class="login_banner" alt="">
     <div class="phone">
       <img src="@/assets/images/phone1.png" alt="">
       <input type="tel" placeholder="请输入手机号码" v-model="username">

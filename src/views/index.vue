@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <router-view />
+    <router-view @changeActive="changeActive"/>
     <ul class="menus flex_around_center">
       <li class="flex_center_center" @click="link('indexContent')">
         <img src="@/assets/images/index_active.png" v-if="active == 'indexContent'" />
@@ -15,7 +15,7 @@
       <li class="flex_center_center" @click="link('credit')">
         <img src="@/assets/images/xinyong_active.png" v-if="active == 'credit'"/>
         <img src="@/assets/images/xinyong.png" v-else />
-        <p>信用报告</p>
+        <p>投诉建议</p>
       </li>
       <li class="flex_center_center" @click="link('my')">
         <img src="@/assets/images/wode_active.png" alt="" v-if="active == 'my'" />
@@ -36,6 +36,9 @@ export default {
     }
   },
   methods:{
+    changeActive(val){
+      this.active = val
+    },
     link(active){
       this.active = active
       this.$router.push(active)

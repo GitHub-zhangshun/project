@@ -30,7 +30,7 @@ const routes = [{
             name: "credit",
             component: () => import ('@/components/credit.vue'),
             meta: {
-                title: '信用报告',
+                title: '投诉建议',
                 requireAuth: true
             }
         },{

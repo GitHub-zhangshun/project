@@ -13,7 +13,7 @@
           <img src="@/assets/images/index_2.png" v-if="index==2"/>
           <img src="@/assets/images/index_3.png" v-if="index==3"/>
         </div>
-        <p>{{item}}</p>
+        <p>{{item.text}}</p>
       </li>
     </ul>
     <div class="title">

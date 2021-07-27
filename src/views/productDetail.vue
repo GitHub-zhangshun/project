@@ -149,6 +149,9 @@ import { Button , Toast} from 'vant';
       }).then((res) => {
         if(res.data.status == 200){
           Toast('申请成功')
+          setTimeout( () => {
+            this.$router.push('/loan')
+          },2000)
         }else{
           Toast(res.data.msg)
         }

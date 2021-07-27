@@ -57,7 +57,7 @@
           <span class="icon iconfont icon-arrow-right"></span>
         </li>
         <li>
-          <div class="left">
+          <div class="left" @click="link('credit')">
             <img src="@/assets/images/tousu.png" alt="">
             <span>投诉建议</span>
           </div>
@@ -96,6 +96,10 @@ export default {
       localStorage.removeItem('userInfo')
       this.$router.push('/')
     },
+    link(url){
+      this.$router.push(`/${url}`)
+      this.$emit('changeActive',url)
+    }
   },
 };
 </script>
