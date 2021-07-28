@@ -167,7 +167,7 @@ import { Button , Toast} from 'vant';
   background: #fff;
   .top_bg_img{
     height: 460/2.44px;
-    background: url('https://t7.baidu.com/it/u=3691080281,11347921&fm=193&f=GIF') center center no-repeat;
+    // background: url('https://t7.baidu.com/it/u=3691080281,11347921&fm=193&f=GIF') center center no-repeat;
     background-size: 100% 100%;
   }
   .info{

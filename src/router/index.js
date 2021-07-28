@@ -75,6 +75,15 @@ const routes = [{
             title: '详细信息',
             requireAuth: true
         }
+    },
+    {
+        path: '/aboutOurs',
+        name: 'aboutOurs',
+        component: () => import ('../views/aboutOurs.vue'),
+        meta: {
+            title: '关于我们',
+            requireAuth: true
+        }
     }
 ]
 

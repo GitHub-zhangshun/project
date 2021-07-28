@@ -49,7 +49,7 @@
     <div class="setting">
       <div class="title"><span></span>设置</div>
       <ul>
-        <li>
+        <li @click="$router.push('/aboutOurs')">
           <div class="left">
             <img src="@/assets/images/tishi.png" alt="">
             <span>关于我们</span>
