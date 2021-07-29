@@ -63,7 +63,7 @@
           </div>
           <span class="icon iconfont icon-arrow-right"></span>
         </li>
-        <li>
+        <li @click="$router.push('/customer')">
           <div class="left">
             <img src="@/assets/images/phone.png" alt="">
             <span>联系客服</span>

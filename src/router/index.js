@@ -82,7 +82,14 @@ const routes = [{
         component: () => import ('../views/aboutOurs.vue'),
         meta: {
             title: '关于我们',
-            requireAuth: true
+        }
+    },
+    {
+        path: '/customer',
+        name: 'customer',
+        component: () => import ('../views/customer.vue'),
+        meta: {
+            title: '联系我们',
         }
     }
 ]

@@ -11,14 +11,14 @@
         <span>*</span>
         <p>投诉标题</p>
       </div>
-      <input type="text" class="right" placeholder="简要概括投诉反馈的问题 ">
+      <input type="text" class="right" v-model="title" placeholder="简要概括投诉反馈的问题 ">
     </div>
     <div class="content_title">
       <span>*</span>
       <p>投诉内容</p>
     </div>
     <van-field
-      v-model="message"
+      v-model="content"
       rows="2"
       :autosize=" { maxHeight: 250, minHeight: 250 }"
       label=""
@@ -27,23 +27,54 @@
       show-word-limit
       placeholder="请根据实际情况具体说明您的投诉事由，投诉一旦提交，无法删除，对于虚假，恶意投诉，平台保留追究法鲁责任的权力！"
     />
-    <van-button type="primary" round  size="large" color="#fcd43c" >提交</van-button>
+    <van-button type="primary" @click="submit" round  size="large" color="#fcd43c" >提交</van-button>
   </div>
 </template>
 
 <script>
-import { Field , Button } from 'vant';
+import { Field , Button ,Toast } from 'vant';
 export default {
   name: "credit",
   components:{
     [Field.name]:Field,
     [Button.name]:Button,
+    [Toast.name]:Toast,
   },
   data() {
     return {
       active:0,
-      message:''
+      content:'',
+      title:''
     };
+  },
+  methods: {
+    submit(){
+      if(this.active == 0){
+        Toast('请选择投诉类型反馈')
+      }
+      if(this.title == ''){
+        Toast('请输入投诉标题')
+      }
+      if(this.content == ''){
+        Toast('请输入投诉内容')
+      }
+      this.$axios({
+        method: "post",
+        url: "/user/suggest",
+        data:{
+          uid:JSON.parse(localStorage.getItem('userInfo')).id,
+          type:this.active,
+          title:this.title,
+          content:this.content,
+        }
+      }).then((res) => {
+        if(res.data.status == 200 ){
+          Toast('建议提交成功')
+        }else{
+          Toast(res.data.msg)
+        }
+      })
+    },
   },
 };
 </script>

@@ -1,20 +1,20 @@
 <template>
     <div class="aboutOurs">
-        <p class="info">够用是一款互联网线上金融撮合平台。主要为用户提供线上持牌金融机构、银行消费金融机构以及线下的助贷业务、贷款咨询业务的推荐服务。为个人、小微企业、个体工商户提供借款需求的推荐与匹配服务。</p>
+        <p class="info">{{info}}</p>
         <div class="logo">
-            <img src="https://t7.baidu.com/it/u=3691080281,11347921&fm=193&f=GIF" alt="">
+            <img :src="icon" alt="">
         </div>
         <p class="banben">V1.0.0</p>
         <ul>
             <li>
                 <div class="left">商务合作</div>
-                <div class="right">liuyang@hrongcorp.com</div>
+                <div class="right">{{cooperate}}</div>
             </li>
-            <li>
+            <li @click="agreement(1)">
                 <div class="left">用户协议</div>
                 <span class="icon iconfont icon-arrow-right"></span>
             </li>
-            <li>
+            <li @click="agreement(2)">
                 <div class="left">隐私政策</div>
                 <span class="icon iconfont icon-arrow-right"></span>
             </li>
@@ -26,7 +26,34 @@
 
 <script>
     export default {
-        
+        name:'aboutOurs',
+        data() {
+            return {
+                info:'',
+                icon:'',
+                cooperate:'',
+            }
+        },
+        mounted() {
+            this.$axios({
+            method: "get",
+            url: "/conf/aboutUs",
+          }).then((res) => {
+            if(res.data.status == 200 ){
+                this.info = res.data.data.info
+                this.icon = res.data.data.icon
+                this.cooperate = res.data.data.cooperate
+              console.log(res)
+            }else{
+              Toast(res.data.msg)
+            }
+          })
+        },
+        methods: {
+            agreement(val){
+                this.$router.push({path:'/agreement',query:{type:val}})
+            },
+        },  
     }
 </script>
 
