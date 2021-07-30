@@ -1,6 +1,6 @@
 <template>
   <div class="loan">
-    <div class="loan_title" :style="{backgroundImage:'url(https://img1.baidu.com/it/u=1257639984,1809454588&fm=26&fmt=auto&gp=0.jpg)'}">
+    <div class="loan_title" :style="{backgroundImage:'url(http://static.zhynb.com/manager/bg/dae.png)'}">
       <span :class="flag?'active' : ''" @click="active='1',request(1)">急速贷</span>
       <span :class="!flag?'active' : ''" @click="active='2',request(2)">大额贷</span>
     </div>
