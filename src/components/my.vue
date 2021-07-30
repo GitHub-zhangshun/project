@@ -6,7 +6,7 @@
         <span v-if="false">未开通会员</span>
       </div>
       <p class="phone">{{userInfo.username || '未登录'}}</p>
-      <p class="renzhen" @click="$router.push('/step')">实名认证>></p>
+      <p class="renzhen" v-if="showShiMing" @click="$router.push('/step')">实名认证>></p>
     </div>
     <ul class="menu">
       <li>
@@ -88,7 +88,8 @@ export default {
   name: "my",
   data() {
     return {
-      userInfo:JSON.parse(localStorage.getItem('userInfo')) || ''
+      userInfo:JSON.parse(localStorage.getItem('userInfo')) || '',
+      showShiMing:JSON.parse(localStorage.getItem('ext')).status==200 || false
     };
   },
   methods: {

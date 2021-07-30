@@ -505,7 +505,11 @@ import { areaList } from '@vant/area-data';
             data:{
               ...params,
               uid:JSON.parse(localStorage.getItem('userInfo')).id
-            }
+            },
+            headers: {
+              'time': new Date().getTime(),
+              'sign': this.$md5(`${new Date().getTime()}jklhjg_`)
+            },
           }).then((res) => {
             if(res.data.status == 200 ){
               this.step = 2

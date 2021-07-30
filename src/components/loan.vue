@@ -97,7 +97,11 @@ export default {
       this.ext = []
       this.$axios({
         method: "get",
-        url: `/product/products?item=${active}`,
+        url: `/product/products?item=${active}&uid=${JSON.parse(localStorage.getItem('userInfo')).id}`,
+        headers: {
+          'time': new Date().getTime(),
+          'sign': this.$md5(`${new Date().getTime()}jklhjg_`)
+        },
       }).then((res) => {
         if(res.data.status == 200 ){
           res.data.data.forEach( item => {

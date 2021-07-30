@@ -61,6 +61,10 @@ export default {
       this.$axios({
         method: "post",
         url: "/user/suggest",
+        headers: {
+          'time': new Date().getTime(),
+          'sign': this.$md5(`${new Date().getTime()}jklhjg_`)
+        },
         data:{
           uid:JSON.parse(localStorage.getItem('userInfo')).id,
           type:this.active,

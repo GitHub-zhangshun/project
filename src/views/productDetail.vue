@@ -122,7 +122,11 @@ import { Button , Toast} from 'vant';
         params:{
           id:this.$route.query.id,
           uid:JSON.parse(localStorage.getItem('userInfo')).id
-        }
+        },
+        headers: {
+          'time': new Date().getTime(),
+          'sign': this.$md5(`${new Date().getTime()}jklhjg_`)
+        },
       }).then((res) => {
         if(res.data.status == 200 ){
           res.data.data['premis_text'] = res.data.data.premise.split(',')
@@ -145,7 +149,11 @@ import { Button , Toast} from 'vant';
         data:{
           product_id:`${this.$route.query.id}`,
           uid:JSON.parse(localStorage.getItem('userInfo')).id
-        }
+        },
+        headers: {
+          'time': new Date().getTime(),
+          'sign': this.$md5(`${new Date().getTime()}jklhjg_`)
+        },
       }).then((res) => {
         if(res.data.status == 200){
           Toast('申请成功')

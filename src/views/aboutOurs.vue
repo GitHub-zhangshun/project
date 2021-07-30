@@ -38,6 +38,11 @@
             this.$axios({
             method: "get",
             url: "/conf/aboutUs",
+            params:{uid:JSON.parse(localStorage.getItem('userInfo')).id},
+            headers: {
+                'time': new Date().getTime(),
+                'sign': this.$md5(`${new Date().getTime()}jklhjg_`)
+            },
           }).then((res) => {
             if(res.data.status == 200 ){
                 this.info = res.data.data.info

@@ -7,8 +7,10 @@ import '@/assets/css/iconfont.css'
 import 'lib-flexible'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import md5 from 'js-md5';
 
 Vue.prototype.$axios = axios
+Vue.prototype.$md5 = md5
 Vue.prototype.$cookies = Cookies
 
 // axios.defaults.baseURL = '/api';

@@ -35,6 +35,19 @@ export default {
       active:this.$route.name,
     }
   },
+  mounted() {
+    this.$axios({
+        method: "get",
+        url: '/user/isExt',
+        params:{uid:JSON.parse(localStorage.getItem('userInfo')).id},
+        headers: {
+          'time': new Date().getTime(),
+          'sign': this.$md5(`${new Date().getTime()}jklhjg_`)
+        },
+      }).then((res) => {
+        localStorage.setItem('ext',JSON.stringify(res.data))
+      })
+  },
   methods:{
     changeActive(val){
       this.active = val

@@ -34,6 +34,10 @@ import {Toast} from 'vant';
       this.$axios({
         method: "get",
         url: "/conf/aboutUs",
+        headers: {
+          'time': new Date().getTime(),
+          'sign': this.$md5(`${new Date().getTime()}jklhjg_`)
+        },
       }).then((res) => {
         this.icon = res.data.data.icon
         this.qrcode = res.data.data.qrcode

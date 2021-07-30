@@ -31,7 +31,11 @@ export default {
       this.$axios({
         method: "get",
         url: "/channel/info",
-        params:{code:this.$route.query.code}
+        params:{code:this.$route.query.code},
+        headers: {
+          'time': new Date().getTime(),
+          'sign': this.$md5(`${new Date().getTime()}jklhjg_`)
+        },
       }).then((res) => {
         if(res.data.status == 200){
           this.front_conf = res.data.data
@@ -56,7 +60,11 @@ export default {
       this.$axios({
         method: "post",
         url: "/user/registOrLogin",
-        data:{username:this.username,channel_id:this.front_conf.id}
+        data:{username:this.username,channel_id:this.front_conf.id},
+        headers: {
+          'time': new Date().getTime(),
+          'sign': this.$md5(`${new Date().getTime()}jklhjg_`)
+        },
       }).then((res) => {
         let result = res.data
         if(result.status == 200 ){
