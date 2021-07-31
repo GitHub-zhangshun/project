@@ -19,8 +19,8 @@
                 <span class="icon iconfont icon-arrow-right"></span>
             </li>
         </ul>
-        <p class="bottom">成都慧融科技有限公司</p>
-        <p class="bottom1">属ICP备20017813号</p>
+        <p class="bottom">{{company}}</p>
+        <p class="bottom1">{{icp}}</p>
     </div>
 </template>
 
@@ -32,6 +32,8 @@
                 info:'',
                 icon:'',
                 cooperate:'',
+				icp:'',
+				company:''
             }
         },
         mounted() {
@@ -48,6 +50,8 @@
                 this.info = res.data.data.info
                 this.icon = res.data.data.icon
                 this.cooperate = res.data.data.cooperate
+				this.icp = res.data.data.icp
+				this.company = res.data.data.company
               console.log(res)
             }else{
               Toast(res.data.msg)

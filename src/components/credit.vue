@@ -25,7 +25,7 @@
       type="textarea"
       maxlength="1000"
       show-word-limit
-      placeholder="请根据实际情况具体说明您的投诉事由，投诉一旦提交，无法删除，对于虚假，恶意投诉，平台保留追究法鲁责任的权力！"
+      placeholder="请根据实际情况具体说明您的投诉事由，投诉一旦提交，无法删除，对于虚假，恶意投诉，平台保留追究法律责任的权力！"
     />
     <van-button type="primary" @click="submit" round  size="large" color="#fcd43c" >提交</van-button>
   </div>

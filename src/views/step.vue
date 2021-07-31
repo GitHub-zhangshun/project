@@ -24,8 +24,8 @@
     </ul>
     <p class="tips" v-if="step!==2">
       <img src="@/assets/images/AI.png" alt="">
-      <span v-if="step==0">小用AI:耐心填完资料,才能获得低利率的贷款</span>
-      <span v-if="step==1">小用AI:恶意填写虚假资料,可能影响您的信用</span>
+      <span v-if="step==0">小花AI:耐心填完资料,才能获得低利率的贷款</span>
+      <span v-if="step==1">小花AI:恶意填写虚假资料,可能影响您的信用</span>
     </p>
     <div class="bottom">
       <div class="step_1" v-if="step==0">
