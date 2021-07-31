@@ -9,15 +9,15 @@
       <p class="renzhen" v-if="showShiMing" @click="$router.push('/step')">实名认证>></p>
     </div>
     <ul class="menu">
-      <li>
+      <li @click="$router.push('/indexContent'),$emit('changeActive','indexContent')">
         <img src="@/assets/images/jiekuan.png" alt="">
         <span>我要借款</span>
       </li>
-      <li>
+      <li @click="$router.push('/customer')">
         <img src="@/assets/images/xinxi.png" alt="">
         <span>联系客服</span>
       </li>
-      <li>
+      <li @click="tips">
         <img src="@/assets/images/xingyong1.png" alt="">
         <span>信用报告</span>
       </li>
@@ -32,15 +32,15 @@
    <div class="tools">
       <div class="title"><span></span>常用工具</div>
       <ul>
-        <li>
+        <li @click="tips">
           <img src="@/assets/images/quanyi.png" alt="">
           <span>兑换权益</span>
         </li>
-        <li>
+        <li @click="tips">
           <img src="@/assets/images/jilu.png" alt="">
           <span>网贷记录</span>
         </li>
-        <li>
+        <li @click="tips">
           <img src="@/assets/images/qiandao.png" alt="">
           <span>签到领现金</span>
         </li>
@@ -84,8 +84,12 @@
 </template>
 
 <script>
+import { Toast} from 'vant';
 export default {
   name: "my",
+  components:{
+    [Toast.name]:Toast,
+  },
   data() {
     return {
       userInfo:JSON.parse(localStorage.getItem('userInfo')) || '',
@@ -93,6 +97,9 @@ export default {
     };
   },
   methods: {
+    tips(){
+      Toast('功能正在开发中')
+    },
     logout(){
       localStorage.removeItem('userInfo')
       this.$router.push('/')

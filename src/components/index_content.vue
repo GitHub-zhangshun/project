@@ -1,13 +1,13 @@
 <template>
   <div class="indexContent">
     <swiper ref="mySwiper" :options="swiperOptions">
-      <swiper-slide v-for="(item, index) in img" :key="index">
-        <img :src="item.image" :alt="item.description"/>
+      <swiper-slide v-for="(item, index) in img" :key="index" >
+        <img :src="item.image" :alt="item.description" @click="link(item.url)"/>
       </swiper-slide>
     </swiper>
     <ul class="product flex_between_center">
       <li class="flex_between_center" v-for="(item, index) in product" :key="index">
-        <div :class="`index_${index}`">
+        <div :class="`index_${index}`" @click="$router.push(item.route),$emit('changeActive',item.route)">
           <img src="@/assets/images/index_0.png" v-if="index==0"/>
           <img src="@/assets/images/index_1.png" v-if="index==1"/>
           <img src="@/assets/images/index_2.png" v-if="index==2"/>
@@ -55,7 +55,7 @@ export default {
           delay: 2000,
           disableOnInteraction: false,
         },
-        loop: true, // 循环模式选项
+        // loop: true, // 循环模式选项
       },
       img:[],
       product:[],
@@ -74,6 +74,7 @@ export default {
     }).then((res) => {
       if(res.data.status == 200 ){
         this.img = res.data.data
+        console.log(this.img)
       }
     })
     this.$axios({
@@ -101,6 +102,12 @@ export default {
       }
     })
   },  
+  methods:{
+    link(url){
+      if(!url) return
+      window.location.href = url
+    }
+  }
 };
 </script>
 

@@ -8,7 +8,7 @@
         <p>首页</p>
       </li>
       <li class="flex_center_center" @click="link('loan')">
-        <img src="@/assets/images/daikuan_active.png" v-if="active == 'loan'" />
+        <img src="@/assets/images/daikuan_active.png" v-if="active == 'loan' || active == '/loan?type=1' || active == '/loan?type=2'" />
         <img src="@/assets/images/daikuan.png" v-else />
         <p>贷款</p>
       </li>

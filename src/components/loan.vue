@@ -27,9 +27,9 @@
           <span>{{money}}</span>
           <span>&yen;</span>
         </div>
-        <button class="right" :style="{backgroundColor:active==1?'#346FE4':'#FF8D4E'}" @click="$router.push('/step')">立即完善</button>
+        <button class="right" :style="{backgroundColor:active==1?'#346FE4':'#FF8D4E'}" @click="$router.push('/step')" v-if="showShiMing">立即完善</button>
       </div>
-      <p>完善资料最高可激活</p>
+      <p v-if="showShiMing">完善资料最高可激活</p>
     </div>
     <div class="daikuan">
       <img src="@/assets/images/xinhao3.png" alt="" v-if="active=='1'"/>
@@ -65,7 +65,8 @@ export default {
   name: "loan",
   data() {
     return {
-      active:'1',
+      active:this.$route.query.type || '1',
+      showShiMing:JSON.parse(localStorage.getItem('ext')).status==200 || false,
       hotProduct:[],
       ext:[],
       type:[
